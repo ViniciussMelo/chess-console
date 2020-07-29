@@ -15,73 +15,73 @@ namespace xadrez
             return "R";
         }
 
-        private bool podeMover(Posicao pos)
+        private bool PodeMover(Posicao pos)
         {
-            Peca p = tab.peca(pos);
+            Peca p = Tab.Peca(pos);
             //retorna se não tem alguma peça na posição ou se é uma peça adversária
-            return p == null || p.cor != this.cor;
+            return p == null || p.Cor != this.Cor;
         }
 
-        public override bool[,] movimentosPossiveis()
+        public override bool[,] MovimentosPossiveis()
         {
-            bool[,] matriz = new bool[tab.linhas, tab.colunas];
+            bool[,] matriz = new bool[Tab.Linhas, Tab.Colunas];
 
             Posicao pos = new Posicao(0, 0);
 
             //posição acima
-            pos.definirValores(posicao.linha - 1, posicao.coluna);
-            if (tab.posicaoValida(pos) && podeMover(pos))
+            pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna);
+            if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
-                matriz[pos.linha, pos.coluna] = true;
+                matriz[pos.Linha, pos.Coluna] = true;
             }
 
             // ne
-            pos.definirValores(posicao.linha - 1, posicao.coluna + 1);
-            if (tab.posicaoValida(pos) && podeMover(pos))
+            pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna + 1);
+            if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
-                matriz[pos.linha, pos.coluna] = true;
+                matriz[pos.Linha, pos.Coluna] = true;
             }
 
             // direita
-            pos.definirValores(posicao.linha, posicao.coluna + 1);
-            if (tab.posicaoValida(pos) && podeMover(pos))
+            pos.DefinirValores(Posicao.Linha, Posicao.Coluna + 1);
+            if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
-                matriz[pos.linha, pos.coluna] = true;
+                matriz[pos.Linha, pos.Coluna] = true;
             }
 
             // se
-            pos.definirValores(posicao.linha + 1, posicao.coluna + 1);
-            if (tab.posicaoValida(pos) && podeMover(pos))
+            pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna + 1);
+            if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
-                matriz[pos.linha, pos.coluna] = true;
+                matriz[pos.Linha, pos.Coluna] = true;
             }
 
             // abaixo
-            pos.definirValores(posicao.linha + 1, posicao.coluna);
-            if (tab.posicaoValida(pos) && podeMover(pos))
+            pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna);
+            if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
-                matriz[pos.linha, pos.coluna] = true;
+                matriz[pos.Linha, pos.Coluna] = true;
             }
 
             // so
-            pos.definirValores(posicao.linha + 1, posicao.coluna - 1);
-            if (tab.posicaoValida(pos) && podeMover(pos))
+            pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna - 1);
+            if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
-                matriz[pos.linha, pos.coluna] = true;
+                matriz[pos.Linha, pos.Coluna] = true;
             }
 
             // esquerda
-            pos.definirValores(posicao.linha, posicao.coluna - 1);
-            if (tab.posicaoValida(pos) && podeMover(pos))
+            pos.DefinirValores(Posicao.Linha, Posicao.Coluna - 1);
+            if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
-                matriz[pos.linha, pos.coluna] = true;
+                matriz[pos.Linha, pos.Coluna] = true;
             }
 
             // no
-            pos.definirValores(posicao.linha - 1, posicao.coluna - 1);
-            if (tab.posicaoValida(pos) && podeMover(pos))
+            pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna - 1);
+            if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
-                matriz[pos.linha, pos.coluna] = true;
+                matriz[pos.Linha, pos.Coluna] = true;
             }
 
             return matriz;
