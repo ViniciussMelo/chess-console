@@ -9,10 +9,10 @@ namespace xadrez
         public int Turno { get; private set; }
         public Cor JogadorAtual { get; private set; }
         public bool Terminada { get; private set; }
-        
+
         private HashSet<Peca> pecas;
 
-        private  HashSet<Peca> capturadas;
+        private HashSet<Peca> capturadas;
 
 
         public PartidaDeXadrez()
@@ -32,6 +32,10 @@ namespace xadrez
             p.IncrementarQteMovimentos();
             Peca pecaCapturada = Tab.RetirarPeca(destino);
             Tab.ColocarPeca(p, destino);
+            if (pecaCapturada != null)
+            {
+                capturadas.Add(pecaCapturada);
+            }
         }
 
         public void RealizaJogada(Posicao origem, Posicao destino)
@@ -81,6 +85,33 @@ namespace xadrez
         {
             Tab.ColocarPeca(peca, new PosicaoXadrez(coluna, linha).ToPosicao());
             pecas.Add(peca);
+        }
+
+        public HashSet<Peca> PecasCapturadas(Cor cor)
+        {
+            HashSet<Peca> aux = new HashSet<Peca>();
+            foreach (Peca p in capturadas)
+            {
+                if (p.Cor == cor)
+                {
+                    aux.Add(p);
+                }
+            }
+            return aux;
+        }
+
+        public HashSet<Peca> PecasEmJogo(Cor cor)
+        {
+            HashSet<Peca> aux = new HashSet<Peca>();
+            foreach (Peca p in capturadas)
+            {
+                if (p.Cor == cor)
+                {
+                    aux.Add(p);
+                }
+            }
+            aux.ExceptWith(PecasCapturadas(cor));
+            return aux;
         }
 
         private void ColocarPecas()
