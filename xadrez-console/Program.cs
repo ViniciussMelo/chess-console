@@ -34,11 +34,15 @@ namespace xadrez_console
                         partida.ValidarPosicaoDeDestino(origem, destino);
 
                         partida.RealizaJogada(origem, destino);
-                    } catch (TabuleiroException e) {
+                    }
+                    catch (TabuleiroException e)
+                    {
                         Console.WriteLine(e.Message);
                         Console.ReadLine();
                     }
                 }
+                Console.Clear();
+                Tela.ImprimirPartida(partida);
             }
             catch (TabuleiroException e)
             {
