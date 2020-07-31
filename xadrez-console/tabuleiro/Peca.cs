@@ -42,7 +42,7 @@
             return false;
         }
 
-        public bool MovimentoPossivel(Posicao pos)
+        public bool MovimentosPossiveis(Posicao pos)
         {
             return MovimentosPossiveis()[pos.Linha, pos.Coluna];
         }
