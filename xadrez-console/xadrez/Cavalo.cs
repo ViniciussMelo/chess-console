@@ -9,22 +9,29 @@ namespace xadrez_console.xadrez
 {
     class Cavalo : Peca
     {
+        #region CTOR
         public Cavalo(Tabuleiro tab, Cor cor)
             : base(tab, cor)
         {
         }
+        #endregion
 
+        #region ToString
         public override string ToString()
         {
             return "C";
         }
+        #endregion
 
+        #region PodeMover
         private bool PodeMover(Posicao pos)
         {
             Peca p = Tab.Peca(pos);
             return p == null || p.Cor != this.Cor;
         }
+        #endregion
 
+        #region MovimentosPossiveis
         public override bool[,] MovimentosPossiveis()
         {
             bool[,] mat = new bool[Tab.Linhas, Tab.Colunas];
@@ -81,5 +88,6 @@ namespace xadrez_console.xadrez
 
             return mat;
         }
+        #endregion
     }
 }

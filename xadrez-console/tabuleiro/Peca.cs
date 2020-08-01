@@ -7,6 +7,7 @@
         public int QteMovimentos { get; protected set; }
         public Tabuleiro Tab { get; set; }
 
+        #region CTOR
         public Peca(Tabuleiro tab, Cor cor)
         {
             Posicao = null;
@@ -14,17 +15,23 @@
             Cor = cor;
             QteMovimentos = 0;
         }
+        #endregion
 
+        #region IncrementarQteMovimentos
         public void IncrementarQteMovimentos()
         {
             QteMovimentos++;
         }
+        #endregion
 
+        #region DecrementarQteMovimentos
         public void DecrementarQteMovimentos()
         {
             QteMovimentos--;
         }
+        #endregion
 
+        #region ExisteMovimentosPossiveis
         public bool ExisteMovimentosPossiveis()
         {
             bool[,] matriz = MovimentosPossiveis();
@@ -41,12 +48,17 @@
 
             return false;
         }
+        #endregion
 
+        #region MovimentosPossiveis
         public bool MovimentosPossiveis(Posicao pos)
         {
             return MovimentosPossiveis()[pos.Linha, pos.Coluna];
         }
+        #endregion
 
+        #region MovimentosPossiveis
         public abstract bool[,] MovimentosPossiveis();
+        #endregion
     }
 }

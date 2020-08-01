@@ -7,6 +7,7 @@ namespace xadrez_console
 {
     class Tela
     {
+        #region ImprimirPartida
         public static void ImprimirPartida(PartidaDeXadrez partida)
         {
             ImprimirTabuleiro(partida.Tab);
@@ -30,7 +31,9 @@ namespace xadrez_console
                 }
             }
         }
+        #endregion
 
+        #region ImprimirPecasCapturadas
         public static void ImprimirPecasCapturadas(PartidaDeXadrez partida)
         {
             Console.WriteLine("Peças capturadas:");
@@ -46,7 +49,9 @@ namespace xadrez_console
             Console.ForegroundColor = aux;
             Console.WriteLine();
         }
+        #endregion
 
+        #region ImprimirConjunto
         public static void ImprimirConjunto(HashSet<Peca> conjunto)
         {
             Console.Write("[");
@@ -56,7 +61,9 @@ namespace xadrez_console
             }
             Console.Write("]");
         }
+        #endregion
 
+        #region ImprimirTabuleiro
         public static void ImprimirTabuleiro(Tabuleiro tab)
         {
             for (int i = 0; i < tab.Linhas; i++)
@@ -70,7 +77,9 @@ namespace xadrez_console
             }
             Console.WriteLine("  a b c d e f g h");
         }
+        #endregion
 
+        #region ImprimirTabuleiro
         public static void ImprimirTabuleiro(Tabuleiro tab, bool[,] posicoesPossiveis)
         {
             ConsoleColor fundoOriginal = Console.BackgroundColor;
@@ -97,7 +106,9 @@ namespace xadrez_console
             Console.WriteLine("  a b c d e f g h");
             Console.BackgroundColor = fundoOriginal;
         }
+        #endregion
 
+        #region LerPosicaoXadrez
         public static PosicaoXadrez LerPosicaoXadrez()
         {
             string s = Console.ReadLine();
@@ -106,7 +117,9 @@ namespace xadrez_console
 
             return new PosicaoXadrez(coluna, linha);
         }
+        #endregion
 
+        #region ImprimirPeca
         public static void ImprimirPeca(Peca peca)
         {
             if (peca == null)
@@ -129,5 +142,6 @@ namespace xadrez_console
                 Console.Write(" ");
             }
         }
+        #endregion
     }
 }

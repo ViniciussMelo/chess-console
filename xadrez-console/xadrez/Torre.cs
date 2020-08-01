@@ -4,24 +4,31 @@ namespace xadrez
 {
     class Torre : Peca
     {
+        #region CTOR
         public Torre(Tabuleiro tab, Cor cor)
             : base(tab, cor)
         {
 
         }
+        #endregion
 
+        #region ToString
         public override string ToString()
         {
             return "T";
         }
+        #endregion
 
+        #region PodeMover
         private bool PodeMover(Posicao pos)
         {
             Peca p = Tab.Peca(pos);
             //retorna se não tem alguma peça na posição ou se é uma peça adversária
             return p == null || p.Cor != this.Cor;
         }
+        #endregion
 
+        #region MovimentosPossiveis
         public override bool[,] MovimentosPossiveis()
         {
             bool[,] matriz = new bool[Tab.Linhas, Tab.Colunas];
@@ -78,5 +85,6 @@ namespace xadrez
 
             return matriz;
         }
+        #endregion
     }
 }

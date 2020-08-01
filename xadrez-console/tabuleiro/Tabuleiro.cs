@@ -6,29 +6,38 @@
         public int Colunas { get; set; }
         private Peca[,] pecas;
 
+        #region CTOR
         public Tabuleiro(int linhas, int colunas)
         {
             Linhas = linhas;
             Colunas = colunas;
             pecas = new Peca[linhas, colunas];
         }
+        #endregion
 
+        #region Peca(linha, coluna)
         public Peca Peca(int linha, int coluna)
         {
             return pecas[linha, coluna];
         }
+        #endregion
 
+        #region Peca(Posicao)
         public Peca Peca(Posicao pos)
         {
             return pecas[pos.Linha, pos.Coluna];
         }
+        #endregion
 
+        #region ExistePeca
         public bool ExistePeca(Posicao pos)
         {
             ValidarPosicao(pos);
             return Peca(pos) != null;
         }
+        #endregion
 
+        #region ColocarPeca
         public void ColocarPeca(Peca p, Posicao pos)
         {
             if (ExistePeca(pos))
@@ -39,7 +48,9 @@
             pecas[pos.Linha, pos.Coluna] = p;
             p.Posicao = pos;
         }
+        #endregion
 
+        #region RetirarPeca
         public Peca RetirarPeca(Posicao pos)
         {
             if (Peca(pos) == null)
@@ -53,7 +64,9 @@
 
             return aux;
         }
+        #endregion
 
+        #region PosicaoValida
         public bool PosicaoValida(Posicao pos)
         {
             if (pos.Linha < 0 || pos.Linha >= Linhas || pos.Coluna < 0 || pos.Coluna >= Colunas)
@@ -63,7 +76,9 @@
 
             return true;
         }
+        #endregion
 
+        #region ValidarPosicao
         public void ValidarPosicao(Posicao pos)
         {
             if (!PosicaoValida(pos))
@@ -71,5 +86,6 @@
                 throw new TabuleiroException("Posicação inválida!");
             }
         }
+        #endregion
     }
 }

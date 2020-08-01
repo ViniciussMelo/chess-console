@@ -9,23 +9,29 @@ namespace xadrez_console.xadrez
 {
     class Bispo : Peca
     {
-
+        #region CTOR
         public Bispo(Tabuleiro tab, Cor cor)
             : base(tab, cor)
         {
         }
+        #endregion
 
+        #region ToString
         public override string ToString()
         {
             return "B";
         }
+        #endregion
 
+        #region PodeMover
         private bool PodeMover(Posicao pos)
         {
             Peca p = Tab.Peca(pos);
             return p == null || p.Cor != this.Cor;
         }
+        #endregion
 
+        #region MovimentosPossiveis
         public override bool[,] MovimentosPossiveis()
         {
             bool[,] mat = new bool[Tab.Linhas, Tab.Colunas];
@@ -39,7 +45,7 @@ namespace xadrez_console.xadrez
                 if(Tab.Peca(pos) != null && Tab.Peca(pos).Cor != Cor){
                     break;
                 }
-                pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna - 1);
+                pos.DefinirValores(pos.Linha - 1, pos.Coluna - 1);
             }
 
             // NE
@@ -51,7 +57,7 @@ namespace xadrez_console.xadrez
                 {
                     break;
                 }
-                pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna + 1);
+                pos.DefinirValores(pos.Linha - 1, pos.Coluna + 1);
             }
 
             // SE
@@ -63,7 +69,7 @@ namespace xadrez_console.xadrez
                 {
                     break;
                 }
-                pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna + 1);
+                pos.DefinirValores(pos.Linha + 1, pos.Coluna + 1);
             }
 
             // SO
@@ -75,10 +81,11 @@ namespace xadrez_console.xadrez
                 {
                     break;
                 }
-                pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna - 1);
+                pos.DefinirValores(pos.Linha + 1, pos.Coluna - 1);
             }
 
             return mat;
         }
+        #endregion
     }
 }
