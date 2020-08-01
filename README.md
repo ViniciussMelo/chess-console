@@ -23,8 +23,12 @@
 > 	Promotion
 > ```
 
-## Links
+# Links
 > [Course](https://www.udemy.com/course/programacao-orientada-a-objetos-csharp/)
 
-## Autores
+# Authors
 > - **Vinicius Spada Melo** - Software Developer - [Github](https://github.com/ViniciussMelo)
+
+# Preview
+
+![chess-console](https://user-images.githubusercontent.com/25934151/89105649-508da900-d3f9-11ea-8751-45637a493255.gif)
